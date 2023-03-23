@@ -7,21 +7,25 @@ const navList = [
         name: "Home",
         id: 1,
         title: "home",
+        href: "#",
     },
     {
         name: "News",
         id: 2,
         title: "news",
+        href: "#",
     }, 
     {
         name: "CallBack",
         id: 3,
         title: "callback",
+        href: "#",
     },
     {
         name: "Contacts",
         id: 4,
-        title: "contacts"
+        title: "contacts",
+        href: "#",
     },
 ];
 
@@ -41,19 +45,35 @@ const navList = [
 class Nav extends React.Component {
     constructor(props){
         super(props)
-        this.state = {currentPage: <Home />}
+        
+        this.state = {currentPage:"home"}
     };
 
-    changeState = () => {
+    onClick = (title) => {
+        console.log(title)
+    }
 
+    changeState = () => {
+        
     }
 
     render () {
         return (
             <div>
             <nav className="nav">
-                    {navList.map(({id, name}) => 
-                        <li key={id}>{name}</li> )}          
+                <ul>
+                    <li>
+                    {navList.map(({href, id, title, name}) => 
+                    <a
+                    href={href}
+                    key={id}
+                    onClick={() => this.onClick(title)}
+                    >
+                        {name}
+                    </a>
+                     )}
+                    </li>
+                </ul>              
             </nav>
             <div>{this.state.currentPage}</div>
             </div>
