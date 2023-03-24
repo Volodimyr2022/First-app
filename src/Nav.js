@@ -32,30 +32,31 @@ const navList = [
     const Home = (props) => {
         return (<p>Home page</p>)  
     };
-    // const News = (props) => {
-    //     return (<p>News page</p>)  
-    // };
-    // const CallBack = (props) => {
-    //     return (<p>CallBack page</p>)  
-    // };
-    // const Contacts = (props) => {
-    //     return (<p>Contacts page</p>)  
-    // };
+    const News = (props) => {
+        return (<p>News page</p>)  
+    };
+    const CallBack = (props) => {
+        return (<p>CallBack page</p>)  
+    };
+    const Contacts = (props) => {
+        return (<p>Contacts page</p>)  
+    };
+
+    const PAGES = {
+        home: <Home />,
+        news: <News />,
+        callback: <CallBack />,
+        contacts: <Contacts />,
+    }
 
 class Nav extends React.Component {
     constructor(props){
         super(props)
         
-        this.state = {currentPage:"home"}
+        this.state = {page:"home"}
     };
 
-    onClick = (title) => {
-        console.log(title)
-    }
-
-    changeState = () => {
-        
-    }
+    onClick = (title) => {this.setState({page: title})}
 
     render () {
         return (
@@ -75,7 +76,7 @@ class Nav extends React.Component {
                     </li>
                 </ul>              
             </nav>
-            <div>{this.state.currentPage}</div>
+            <div>{PAGES[this.state.page]}</div>
             </div>
         )
     }
